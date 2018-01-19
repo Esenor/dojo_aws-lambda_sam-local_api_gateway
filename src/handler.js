@@ -11,7 +11,7 @@ module.exports.findCustomerByMail = (event, context, callback) => {
 
     // lambda remote function params
     let invokeParams = {
-      FunctionName: 'dev-dojo-orderModel-dojoOrderModel-F1DV9Z79QA0J',
+      FunctionName: 'dev--dojo--orderModel',
       InvocationType: 'RequestResponse',
       LogType: 'Tail',
       Payload: JSON.stringify({
