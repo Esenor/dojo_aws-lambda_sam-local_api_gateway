@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "pretest-getCustomer": "npm run build",
+    "test-getCustomer": "node -e \"console.log(require('./dist/index').getCustomer('myEmail@oliverstore.com'))\"",
+    "lint": "eslint --ext .js src --ext .js test/specs",
+    "prebuild": "npm run lint",
+    "build": "babel src --out-dir ./dist && ls ./dist"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "eslint": "^4.15.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  },
+  "dependencies": {
+    "faker": "^4.1.0"
+  },
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  }
+}

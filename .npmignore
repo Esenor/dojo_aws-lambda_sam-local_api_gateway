@@ -1,0 +1,10 @@
+node_modules
+yarn.lock
+package-lock.json
+test/test-results.xml
+scripts
+etc/docker
+Rakefile
+Jenkinsfile
+etc/npm
+.npmrc
