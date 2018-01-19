@@ -17,6 +17,7 @@
     "eslint-plugin-standard": "^3.0.1"
   },
   "dependencies": {
+    "aws-sdk": "^2.184.0",
     "faker": "^4.1.0"
   },
   "engines": {

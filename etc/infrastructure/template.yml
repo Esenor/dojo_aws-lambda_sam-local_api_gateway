@@ -27,6 +27,15 @@ Resources:
       Description: 'Customers Model'
       MemorySize: 128
       Timeout: 3
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - lambda:InvokeAsync
+                - lambda:InvokeFunction
+              Resource:
+                - "*"
       Events:
         Api:
           Type: Api
