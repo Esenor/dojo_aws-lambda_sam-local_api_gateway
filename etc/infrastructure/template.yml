@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Dojo Sam Local & AWS Lambda
+
+
+Parameters:
+  Stage: 
+    Type: String
+    Default: dev
+    AllowedValues: 
+      - dev
+      - ppd
+      - prd
+    Description: Enter stage name
+  Env:
+    Type: String
+    Default: default
+    Description: Enter env name
+
+Resources:
+  dojoCustomerModel:    
+    Type: 'AWS::Serverless::Function'    
+    Properties:
+      Handler: dist/handler.findCustomerByMail
+      Runtime: nodejs6.10
+      CodeUri: ../../
+      Description: 'Customers Model'
+      MemorySize: 128
+      Timeout: 3
