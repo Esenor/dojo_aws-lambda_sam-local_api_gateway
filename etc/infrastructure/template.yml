@@ -27,3 +27,9 @@ Resources:
       Description: 'Customers Model'
       MemorySize: 128
       Timeout: 3
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /find-by-mail
+            Method: post
