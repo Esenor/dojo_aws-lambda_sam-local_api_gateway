@@ -50,13 +50,13 @@ Install the aws-sam-local module
     $ npm i
     $ npm run build
     $ npm prune --production
-    $ packageFunction
+    $ rake packageFunction
 
 --------------------------
 
 ### Deploy the function
 
-    $ deployFunction {YOUR_NAME}
+    $ rake deployFunction {YOUR_NAME}
 
 --------------------------
 
