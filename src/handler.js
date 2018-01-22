@@ -1,6 +1,6 @@
 const customerModel = require('./index.js')
 const AWS = require('aws-sdk')
-AWS.config.region = 'eu-west-1'
+AWS.config.region = 'eu-west-3'
 let lambda = new AWS.Lambda()
 
 module.exports.findCustomerByMail = (event, context, callback) => {
@@ -11,7 +11,7 @@ module.exports.findCustomerByMail = (event, context, callback) => {
 
     // lambda remote function params
     let invokeParams = {
-      FunctionName: 'dev--dojo--orderModel',
+      FunctionName: process.env.ORDERSMODEL_NAME,
       InvocationType: 'RequestResponse',
       LogType: 'Tail',
       Payload: JSON.stringify({
