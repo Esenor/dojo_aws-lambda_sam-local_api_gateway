@@ -1,10 +1,9 @@
 # ------------------------------------------------------------------------------
 # Invoke localy the function
-desc "Localy invoke"
+desc "Locally invoke"
 task :localInvoke do 
   ARGV.each { |a| task a.to_sym do ; end }
   if (ARGV.size == 2)
-    sh "npm run build"
     sh "sam local invoke -t ./etc/infrastructure/template.yml --parameter-values \"ParameterKey=Stage,ParameterValue=dev ParameterKey=Env,ParameterValue=#{ARGV[1]}\" --event ./event.json dojoCustomerModel"
     exit 0
   else 
@@ -20,7 +19,7 @@ task :remoteInvoke do
   ARGV.each { |a| task a.to_sym do ; end }
   if (ARGV.size == 2)
     sh "aws lambda invoke --region eu-west-3 --function-name dev--#{ARGV[1]}--dojo--customerModel --payload '{\"body\": \"{\\\"mail\\\":\\\"lorem@gmail.com\\\"}\"}' outfile.json"
-    sh "car outfile.json"
+    sh "cat outfile.json"
     exit 0
   else 
     sh "Need to put YOUR_NAME"
@@ -34,7 +33,6 @@ desc "Local Start API"
 task :localStartApi do 
   ARGV.each { |a| task a.to_sym do ; end }
   if (ARGV.size == 2)
-    #sh "npm run build"
     sh "sam local start-api -t ./etc/infrastructure/template.yml --parameter-values \"ParameterKey=Stage,ParameterValue=dev ParameterKey=Env,ParameterValue=#{ARGV[1]}\""
     exit 0
   else 
@@ -47,7 +45,6 @@ end
 # Package and upload the function
 desc "Package function"
 task :packageFunction do
-    #sh "npm run build" 
     sh "aws cloudformation package --template-file ./etc/infrastructure/template.yml --s3-bucket dojo.lambda --output-template-file ./etc/infrastructure/template-packaged.yml"
 end
 
