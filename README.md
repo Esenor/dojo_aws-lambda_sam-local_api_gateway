@@ -27,7 +27,7 @@ Install the aws-sam-local module
 
 --------------------------
 
-### Test localy the function
+### Test locally the function
 
     $ npm i
     $ npm run build
