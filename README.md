@@ -1,5 +1,12 @@
 # Dojo_aws_lambda_sam_local
 
+## Step 1: Simple Node function
+
+    $ npm i
+    $ npm run test-getCustomer
+
+# Dojo_aws_lambda_sam_local
+
 ## Usage
 
 ### Install the AWS-cli and AWS Sam Local
@@ -43,13 +50,13 @@ Install the aws-sam-local module
     $ npm i
     $ npm run build
     $ npm prune --production
-    $ packageFunction
+    $ rake packageFunction
 
 --------------------------
 
 ### Deploy the function
 
-    $ deployFunction {YOUR_NAME}
+    $ rake deployFunction {YOUR_NAME}
 
 --------------------------
 
