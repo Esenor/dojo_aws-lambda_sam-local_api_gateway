@@ -35,7 +35,7 @@ Install the aws-sam-local module
 
 --------------------------
 
-### Test localy the API Gateway
+### Test locally the API Gateway
 
     $ npm i
     $ npm run build
