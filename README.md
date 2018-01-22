@@ -1,69 +1,66 @@
 # Dojo_aws_lambda_sam_local
 
-## Step 1: Simple Node function
+## Usage
 
-    $ npm i
-    $ npm run test-getCustomer
+### Install the AWS-cli and AWS Sam Local
 
-## Step 2: Simple lambda function
+Install an configure [the AWS cli](https://docs.aws.amazon.com/lambda/latest/dg/setup-awscli.html)
 
-    # Install sam local
+Install the aws-sam-local module
+
     $ npm i -g aws-sam-local
-    
-    # Build source code
-    $ npm run build    
-    
-    # Invoke locally the function
-    $ sam local invoke -t ./etc/infrastructure/template.yml --event ./event.json dojoCustomerModel
-    
-    # --- Function deployment ---
-    
-    # Clean developer tool dependencies
-    $ npm prune --production
-    
-    # Package and upload the fonction on a S3 Bucket
-    $ aws cloudformation package --template-file ./etc/infrastructure/template.yml --s3-bucket dojo.aws.lambda --output-template-file ./etc/infrastructure/template-packaged.yml
-    
-    # Deploy the function, !! change the stack name !!
-    $ aws cloudformation deploy --template-file ./etc/infrastructure/template-packaged.yml --stack-name dev--{stack name}--dojo--customerModel --capabilities CAPABILITY_IAM
-    
-    # Get remote functions name
-    $ aws lambda list-functions
-    
-    # Invoke remote function name, !! change the function name !!
-    $ aws lambda invoke --function-name "{function remote name}" --payload '{"mail": "lorem-ipsum@oliverstore.com"}' outfile.json
 
-## Step 3: API gateway lambda function
+--------------------------
 
-    # Build source code
+### Test the node function
+
     $ npm i
     $ npm run build
-    
-    # Invoke locally the function
-    $ sam local invoke -t ./etc/infrastructure/template.yml --event ./event.json dojoCustomerModel
+    $ npm run test-getCustomer
 
-    # Start locally the API Gateway
-    $ sam local start-api -t ./etc/infrastructure/template.yml
+--------------------------
 
-    # Test API Gateway
+### Test localy the function
+
+    $ npm i
+    $ npm run build
+    $ rake localInvoke {YOUR_NAME}
+
+--------------------------
+
+### Test localy the API Gateway
+
+    $ npm i
+    $ npm run build
+    $ rake localStartApi {YOUR_NAME}
+    # Make a curl
     $ curl -X POST http://127.0.0.1:3000/find-by-mail -d "{\"mail\": \"michu@gmail.com\"}"
-    
-    # --- Function deployment ---
-    
-    # Clean developer tool dependencies
-    $ npm prune --production
-    
-    # Package and upload the fonction on a S3 Bucket
-    $ aws cloudformation package --template-file ./etc/infrastructure/template.yml --s3-bucket dojo.aws.lambda --output-template-file ./etc/infrastructure/template-packaged.yml
-    
-    # Deploy the function, !! change the stack name !!
-    $ aws cloudformation deploy --template-file ./etc/infrastructure/template-packaged.yml --stack-name dev--{stack name}--dojo--customerModel --capabilities CAPABILITY_IAM
-    
-    # Get remote functions name
-    $ aws lambda list-functions
-    
-    # Invoke remote function name, !! change the function name !!
-    $ aws lambda invoke --function-name "{function remote name}" --payload '{"body": "{\"mail\":\"lorem@gmail.com\"}"}' outfile.json
 
-    # Test remote API Gateway
-    $ curl -X POST https://{api url}.amazonaws.com/Prod/find-by-mail -d "{\"mail\": \"michu@gmail.com\"}"
+--------------------------
+
+### Package and upload the function
+
+    $ npm i
+    $ npm run build
+    $ npm prune --production
+    $ packageFunction
+
+--------------------------
+
+### Deploy the function
+
+    $ deployFunction {YOUR_NAME}
+
+--------------------------
+
+### Test the remote function
+
+    $ rake remoteInvoke {YOUR_NAME}
+
+--------------------------
+
+### Test the remote API Gateway
+
+    # get endpoint URL on AWS Lambda dashboard
+    # Make a curl
+    $ curl -X POST https://{api url}.amazonaws.com/Prod/find-by-mail -d "{\"mail\": \"michu@gmail.com\"}"    
