@@ -18,7 +18,7 @@ desc "remote invoke"
 task :remoteInvoke do 
   ARGV.each { |a| task a.to_sym do ; end }
   if (ARGV.size == 2)
-    sh "aws lambda invoke --region eu-west-3 --function-name dev--#{ARGV[1]}--dojo--customerModel --payload '{\"body\": \"{\\\"mail\\\":\\\"lorem@gmail.com\\\"}\"}' outfile.json"
+    sh "aws lambda invoke --region eu-west-3 --function-name dev--#{ARGV[1]}--dojo--customerModel --payload \"{\\\"mail\\\": \\\"lorem@gmail.com\\\"}\" outfile.json"
     sh "cat outfile.json"
     exit 0
   else 
