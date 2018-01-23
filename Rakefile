@@ -13,6 +13,21 @@ task :localInvoke do
 end
 
 # ------------------------------------------------------------------------------
+# Invoke the remote function
+desc "remote invoke"
+task :remoteInvoke do 
+  ARGV.each { |a| task a.to_sym do ; end }
+  if (ARGV.size == 2)
+    sh " aws lambda invoke --region eu-west-3 --function-name dev--#{ARGV[1]}--dojo--customerModel --payload file://event.json outfile.json"
+    sh "cat outfile.json"
+    exit 0
+  else 
+    sh "Need to put YOUR_NAME"
+    exit 1
+  end
+end
+
+# ------------------------------------------------------------------------------
 # Localy start the API Gateway
 desc "Local Start API"
 task :localStartApi do 
