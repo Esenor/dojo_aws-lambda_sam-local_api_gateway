@@ -27,7 +27,7 @@ Install the aws-sam-local module
 
 --------------------------
 
-### Test localy the function
+### Test locally the function
 
     $ npm i
     $ npm run build
@@ -35,7 +35,7 @@ Install the aws-sam-local module
 
 --------------------------
 
-### Test locally the API Gateway
+### Test localy the API Gateway
 
     $ npm i
     $ npm run build
@@ -58,16 +58,4 @@ Install the aws-sam-local module
 
     $ rake deployFunction {YOUR_NAME}
 
---------------------------
 
-### Test the remote function
-
-    $ rake remoteInvoke {YOUR_NAME}
-
---------------------------
-
-### Test the remote API Gateway
-
-    # get endpoint URL on AWS Lambda dashboard
-    # Make a curl
-    $ curl -X POST https://{api url}.amazonaws.com/Prod/find-by-mail -d "{\"mail\": \"michu@gmail.com\"}"    
