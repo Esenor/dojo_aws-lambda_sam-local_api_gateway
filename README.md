@@ -58,9 +58,4 @@ Install the aws-sam-local module
 
     $ rake deployFunction {YOUR_NAME}
 
---------------------------
-
-### Test the remote function
-
-    $ rake remoteInvoke {YOUR_NAME}
 
